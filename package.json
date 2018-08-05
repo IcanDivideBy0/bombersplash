@@ -1,0 +1,16 @@
+{
+  "name": "bombersplash",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Samuel Hurel <samuel.hurel@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "yarn client:deploy",
+    "client:deploy": "yarn physics:build --release --client && cd client && yarn deploy",
+    "maps:build": "find ./server/public/maps -name '*.tmx' | xargs ./scripts/build-map.sh",
+    "maps:watch": "find ./server/public/maps -name '*.tmx' | entr ./scripts/build-map.sh /_",
+    "physics:build": "./scripts/build-physics.sh",
+    "physics:watch": "find ./physics/src -name '*.rs' | entr -c yarn physics:build"
+  },
+  "dependencies": {}
+}

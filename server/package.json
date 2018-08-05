@@ -1,0 +1,34 @@
+{
+  "name": "bombersplash-server",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Samuel Hurel <samuel.hurel@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "exec nodemon -w src -w public -w .env --ext js,json,proto src/index.js",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "canvas": "^1.6.11",
+    "chalk": "^2.4.1",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "env": "link:./src/physics/env",
+    "express": "^4.16.3",
+    "freeice": "^2.2.0",
+    "my-ip": "^1.1.1",
+    "protobufjs": "^6.8.8",
+    "require-dir": "^1.0.0",
+    "simple-peer": "^9.1.2",
+    "socket.io": "^2.1.1",
+    "tiled-utils": "link:../tiled-utils",
+    "uuid": "^3.3.2",
+    "wrtc": "^0.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "nodemon": "^1.18.3",
+    "prettier": "^1.14.0"
+  }
+}

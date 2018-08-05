@@ -1,0 +1,43 @@
+{
+  "name": "bombersplash-client",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://bombersplash.online",
+  "author": "Samuel Hurel <samuel.hurel@gmail.com>",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "hoist-non-react-statics": "^3.0.1",
+    "lodash.curry": "^4.1.1",
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
+    "prop-types": "^15.6.2",
+    "protobufjs": "^6.8.8",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4",
+    "simple-peer": "^9.1.2",
+    "socket.io-client": "^2.1.1",
+    "styled-components": "^3.3.3",
+    "tiled-utils": "link:../tiled-utils"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.1.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "gh-pages": "^1.2.0",
+    "prettier": "^1.14.0"
+  }
+}

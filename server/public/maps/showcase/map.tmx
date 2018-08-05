@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" infinite="1" backgroundcolor="#1c1117" nextobjectid="85">
+ <tileset firstgid="1" name="Dungeon" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="0x72_16x16DungeonTileset.v4.png" width="256" height="256"/>
+  <tile id="117">
+   <objectgroup draworder="index">
+    <object id="1" type="collisionBox" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="118">
+   <objectgroup draworder="index">
+    <object id="1" type="collisionBox" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="152">
+   <animation>
+    <frame tileid="152" duration="100"/>
+    <frame tileid="153" duration="100"/>
+    <frame tileid="154" duration="100"/>
+    <frame tileid="155" duration="100"/>
+    <frame tileid="156" duration="100"/>
+    <frame tileid="157" duration="100"/>
+    <frame tileid="158" duration="100"/>
+    <frame tileid="159" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="168">
+   <objectgroup draworder="index">
+    <object id="3" type="collisionBox" x="4" y="0" width="8" height="14"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="168" duration="100"/>
+    <frame tileid="169" duration="100"/>
+    <frame tileid="170" duration="100"/>
+    <frame tileid="171" duration="100"/>
+    <frame tileid="172" duration="100"/>
+    <frame tileid="173" duration="100"/>
+    <frame tileid="174" duration="100"/>
+    <frame tileid="175" duration="100"/>
+   </animation>
+  </tile>
+ </tileset>
+ <tileset firstgid="257" name="Walls" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="0x72_16x16DungeonTileset_walls.v1.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="513" name="Custom" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="custom.png" width="256" height="256"/>
+ </tileset>
+ <layer name="Floor" width="16" height="16">
+  <data encoding="csv">
+   <chunk x="0" y="0" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,34,35,34,34,0,0,0,0,0,0,
+33,35,34,33,34,35,97,98,99,100,35,34,34,35,35,35,
+51,51,51,51,51,51,113,117,115,116,51,51,51,51,51,51,
+9,25,25,24,24,9,113,114,117,116,25,24,25,24,24,9,
+0,0,0,0,0,0,113,114,115,116,0,0,0,0,0,0,
+0,0,0,0,0,0,129,130,131,132,0,0,0,0,0,0,
+0,0,0,0,0,0,24,6,7,9,0,0,0,0,0,0,
+0,0,0,0,0,0,0,22,23,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,38,39,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+ <layer name="Walls" width="16" height="16">
+  <data encoding="csv">
+   <chunk x="0" y="0" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,1,75,76,3,0,0,0,0,0,0,
+2,2,2,2,2,3,17,91,92,19,1,2,2,2,2,2,
+18,18,4,18,18,19,0,107,108,0,17,18,18,5,18,18,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+ <layer name="Props" width="16" height="16">
+  <data encoding="csv">
+   <chunk x="0" y="0" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,153,0,0,153,0,0,0,0,0,0,
+0,0,0,0,102,0,169,0,0,169,0,103,0,0,0,0,
+0,0,0,0,118,0,0,0,0,0,50,119,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,153,0,0,153,0,0,0,0,0,0,
+0,0,0,0,0,0,169,0,0,169,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="65" gid="233" x="109.424" y="134.242" width="16" height="16"/>
+  <object id="67" gid="166" x="135.455" y="102.727" width="16" height="16"/>
+  <object id="70" x="137.562" y="-7.37671" width="74.2812" height="45" rotation="17.0019">
+   <text wrap="1" color="#ffffff" italic="1" halign="center" valign="center">Hello World!</text>
+  </object>
+  <object id="73" name="red" type="startPosition" x="128" y="176">
+   <point/>
+  </object>
+ </objectgroup>
+ <layer name="Darkness" width="16" height="16">
+  <data encoding="csv">
+   <chunk x="0" y="0" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+123,124,0,0,0,0,0,0,0,0,0,0,0,0,125,126,
+139,140,0,0,0,0,0,0,0,0,0,0,0,0,141,142,
+123,124,0,0,0,0,0,0,0,0,0,0,0,0,125,126,
+139,140,0,0,0,0,0,0,0,0,0,0,0,0,141,142,
+123,124,0,0,0,0,0,0,0,0,0,0,0,0,125,126,
+139,140,0,0,0,0,0,0,0,0,0,0,0,0,141,142,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,127,128,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,143,144,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+ <objectgroup color="#0000ff" name="Collisions">
+  <object id="75" type="collisionBox" x="-48" y="16" width="144" height="64"/>
+  <object id="76" type="collisionBox" x="160" y="16" width="144" height="64"/>
+  <object id="77" type="collisionBox" x="64" y="16" width="128" height="48"/>
+  <object id="78" type="collisionBox" x="-48" y="16" width="48" height="144"/>
+  <object id="79" type="collisionBox" x="256" y="16" width="48" height="144"/>
+  <object id="80" type="collisionBox" x="160" y="112" width="144" height="48"/>
+  <object id="81" type="collisionBox" x="64" y="208" width="128" height="48"/>
+  <object id="82" type="collisionBox" x="144" y="160" width="48" height="96"/>
+  <object id="83" type="collisionBox" x="64" y="160" width="48" height="96"/>
+  <object id="84" type="collisionBox" x="-48" y="112" width="144" height="48"/>
+ </objectgroup>
+</map>

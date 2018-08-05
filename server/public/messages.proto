@@ -1,0 +1,90 @@
+package bombersplash;
+syntax = "proto3";
+
+message Vec {
+  float x = 1;
+  float y = 2;
+}
+
+enum Team {
+  green = 0;
+  blue = 1;
+  red = 2;
+  yellow = 3;
+}
+
+message Player {
+  string id = 1;
+  Team team = 2;
+  Vec pos = 3;
+  float rot = 4;
+  Vec vel = 5;
+  float r = 6;
+}
+
+message Bomb {
+  string id = 1;
+  Team team = 2;
+  Vec pos = 3;
+  float rot = 4;
+  Vec vel = 5;
+  float r = 6;
+}
+
+message Splash {
+  string id = 1;
+  Team team = 2;
+  Vec pos = 3;
+  float rot = 4;
+  float r = 5;
+}
+
+message Scores {
+  optional int32 green = 1;
+  optional int32 blue = 2;
+  optional int32 red = 3;
+  optional int32 yellow = 4;
+}
+
+message GameState {
+  int64 remainingTime = 1;
+  repeated Player players = 2;
+  repeated Bomb bombs = 3;
+  repeated Splash splashes = 4;
+  Scores scores = 5;
+}
+
+message GameUpdate {
+  int64 lastPacketId = 1;
+  GameState gameState = 2;
+}
+
+message PlayerUpdate {
+  message PlayerInputs {
+    message PlayerActions {
+      optional bool placeBomb = 1;
+    };
+
+    Vec vel = 1;
+    PlayerActions actions = 2;
+  }
+
+  int64 packetId = 1;
+  PlayerInputs inputs = 2;
+}
+
+
+// enum MessageType {
+//   'game:update' = 0;
+//   'player:update' = 1;
+// }
+
+message BombersplashMessage {
+  string type = 1;
+
+  oneof data {
+    GameUpdate gameUpdate = 2;
+    PlayerUpdate playerUpdate = 3;
+    Scores gameEnd = 4;
+  }
+}
