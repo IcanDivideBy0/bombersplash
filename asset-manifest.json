@@ -1,6 +1,9 @@
 {
   "main.css": "static/css/main.c1e4d445.css",
   "main.css.map": "static/css/main.c1e4d445.css.map",
-  "main.js": "static/js/main.a756a459.js",
-  "main.js.map": "static/js/main.a756a459.js.map"
+  "main.js": "static/js/main.ccc1eea9.js",
+  "main.js.map": "static/js/main.ccc1eea9.js.map",
+  "static/media/physics.no-modules.js.txt": "static/media/physics.no-modules.js.d9ca2a94.txt",
+  "static/media/physics_bg.wasm": "static/media/physics_bg.a7a92df5.wasm",
+  "static/media/scores-fg.png": "static/media/scores-fg.bc5e3c30.png"
 }

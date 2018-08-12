@@ -1,0 +1,356 @@
+
+(function() {
+    var wasm;
+    const __exports = {};
+    
+    
+    const stack = [];
+    
+    const slab = [{ obj: undefined }, { obj: null }, { obj: true }, { obj: false }];
+    
+    function getObject(idx) {
+        if ((idx & 1) === 1) {
+            return stack[idx >> 1];
+        } else {
+            const val = slab[idx >> 1];
+            
+            return val.obj;
+            
+        }
+    }
+    
+    let slab_next = slab.length;
+    
+    function dropRef(idx) {
+        
+        idx = idx >> 1;
+        if (idx < 4) return;
+        let obj = slab[idx];
+        
+        obj.cnt -= 1;
+        if (obj.cnt > 0) return;
+        
+        // If we hit 0 then free up our space in the slab
+        slab[idx] = slab_next;
+        slab_next = idx;
+    }
+    
+    function takeObject(idx) {
+        const ret = getObject(idx);
+        dropRef(idx);
+        return ret;
+    }
+    
+    function addBorrowedObject(obj) {
+        stack.push(obj);
+        return ((stack.length - 1) << 1) | 1;
+    }
+    
+    let cachedEncoder = new TextEncoder('utf-8');
+    
+    let cachegetUint8Memory = null;
+    function getUint8Memory() {
+        if (cachegetUint8Memory === null || cachegetUint8Memory.buffer !== wasm.memory.buffer) {
+            cachegetUint8Memory = new Uint8Array(wasm.memory.buffer);
+        }
+        return cachegetUint8Memory;
+    }
+    
+    function passStringToWasm(arg) {
+        
+        const buf = cachedEncoder.encode(arg);
+        const ptr = wasm.__wbindgen_malloc(buf.length);
+        getUint8Memory().set(buf, ptr);
+        return [ptr, buf.length];
+    }
+    
+    class ConstructorToken {
+        constructor(ptr) {
+            this.ptr = ptr;
+        }
+    }
+    /**
+    * The physic world
+    */
+    class BombersplashWorld {
+        
+        static __construct(ptr) {
+            return new BombersplashWorld(new ConstructorToken(ptr));
+        }
+        
+        constructor(...args) {
+            if (args.length === 1 && args[0] instanceof ConstructorToken) {
+                this.ptr = args[0].ptr;
+                return;
+            }
+            
+            // This invocation of new will call this constructor with a ConstructorToken
+            let instance = BombersplashWorld.new(...args);
+            this.ptr = instance.ptr;
+        }
+        free() {
+            const ptr = this.ptr;
+            this.ptr = 0;
+            wasm.__wbg_bombersplashworld_free(ptr);
+        }
+        /**
+        * @returns {BombersplashWorld}
+        */
+        static new() {
+            return BombersplashWorld.__construct(wasm.bombersplashworld_new());
+        }
+        /**
+        * @param {number} arg0
+        * @returns {void}
+        */
+        step(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            return wasm.bombersplashworld_step(this.ptr, arg0);
+        }
+        /**
+        * @returns {any}
+        */
+        getWorldState() {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            return takeObject(wasm.bombersplashworld_getWorldState(this.ptr));
+        }
+        /**
+        * @param {any} arg0
+        * @returns {void}
+        */
+        setWorldState(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            try {
+                return wasm.bombersplashworld_setWorldState(this.ptr, addBorrowedObject(arg0));
+                
+            } finally {
+                stack.pop();
+                
+            }
+            
+        }
+        /**
+        * Walls
+        * @param {any} arg0
+        * @returns {void}
+        */
+        addWall(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            try {
+                return wasm.bombersplashworld_addWall(this.ptr, addBorrowedObject(arg0));
+                
+            } finally {
+                stack.pop();
+                
+            }
+            
+        }
+        /**
+        * Player functions
+        * @param {any} arg0
+        * @returns {void}
+        */
+        addPlayer(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            try {
+                return wasm.bombersplashworld_addPlayer(this.ptr, addBorrowedObject(arg0));
+                
+            } finally {
+                stack.pop();
+                
+            }
+            
+        }
+        /**
+        * @param {string} arg0
+        * @returns {void}
+        */
+        removePlayer(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            const [ptr0, len0] = passStringToWasm(arg0);
+            try {
+                return wasm.bombersplashworld_removePlayer(this.ptr, ptr0, len0);
+                
+            } finally {
+                wasm.__wbindgen_free(ptr0, len0 * 1);
+                
+            }
+            
+        }
+        /**
+        * @param {any} arg0
+        * @returns {void}
+        */
+        replacePlayer(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            try {
+                return wasm.bombersplashworld_replacePlayer(this.ptr, addBorrowedObject(arg0));
+                
+            } finally {
+                stack.pop();
+                
+            }
+            
+        }
+        /**
+        * @param {string} arg0
+        * @param {any} arg1
+        * @returns {void}
+        */
+        setPlayerVelocity(arg0, arg1) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            const [ptr0, len0] = passStringToWasm(arg0);
+            try {
+                return wasm.bombersplashworld_setPlayerVelocity(this.ptr, ptr0, len0, addBorrowedObject(arg1));
+                
+            } finally {
+                wasm.__wbindgen_free(ptr0, len0 * 1);
+                stack.pop();
+                
+            }
+            
+        }
+        /**
+        * @param {string} arg0
+        * @returns {any}
+        */
+        getPlayerState(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            const [ptr0, len0] = passStringToWasm(arg0);
+            try {
+                return takeObject(wasm.bombersplashworld_getPlayerState(this.ptr, ptr0, len0));
+                
+            } finally {
+                wasm.__wbindgen_free(ptr0, len0 * 1);
+                
+            }
+            
+        }
+        /**
+        * Bomb functions
+        * @param {any} arg0
+        * @returns {void}
+        */
+        addBomb(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            try {
+                return wasm.bombersplashworld_addBomb(this.ptr, addBorrowedObject(arg0));
+                
+            } finally {
+                stack.pop();
+                
+            }
+            
+        }
+        /**
+        * @param {string} arg0
+        * @returns {void}
+        */
+        removeBomb(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            const [ptr0, len0] = passStringToWasm(arg0);
+            try {
+                return wasm.bombersplashworld_removeBomb(this.ptr, ptr0, len0);
+                
+            } finally {
+                wasm.__wbindgen_free(ptr0, len0 * 1);
+                
+            }
+            
+        }
+        /**
+        * @param {string} arg0
+        * @returns {any}
+        */
+        getBombState(arg0) {
+            if (this.ptr === 0) {
+                throw new Error('Attempt to use a moved value');
+            }
+            const [ptr0, len0] = passStringToWasm(arg0);
+            try {
+                return takeObject(wasm.bombersplashworld_getBombState(this.ptr, ptr0, len0));
+                
+            } finally {
+                wasm.__wbindgen_free(ptr0, len0 * 1);
+                
+            }
+            
+        }
+    }
+    __exports.BombersplashWorld = BombersplashWorld;
+    
+    function addHeapObject(obj) {
+        if (slab_next === slab.length) slab.push(slab.length + 1);
+        const idx = slab_next;
+        const next = slab[idx];
+        
+        slab_next = next;
+        
+        slab[idx] = { obj, cnt: 1 };
+        return idx << 1;
+    }
+    
+    let cachedDecoder = new TextDecoder('utf-8');
+    
+    function getStringFromWasm(ptr, len) {
+        return cachedDecoder.decode(getUint8Memory().subarray(ptr, ptr + len));
+    }
+    
+    __exports.__wbindgen_json_parse = function(ptr, len) {
+        return addHeapObject(JSON.parse(getStringFromWasm(ptr, len)));
+    };
+    
+    let cachegetUint32Memory = null;
+    function getUint32Memory() {
+        if (cachegetUint32Memory === null || cachegetUint32Memory.buffer !== wasm.memory.buffer) {
+            cachegetUint32Memory = new Uint32Array(wasm.memory.buffer);
+        }
+        return cachegetUint32Memory;
+    }
+    
+    __exports.__wbindgen_json_serialize = function(idx, ptrptr) {
+        const [ptr, len] = passStringToWasm(JSON.stringify(getObject(idx)));
+        getUint32Memory()[ptrptr / 4] = ptr;
+        return len;
+    };
+    
+    __exports.__wbindgen_throw = function(ptr, len) {
+        throw new Error(getStringFromWasm(ptr, len));
+    };
+    
+    __exports.__wbindgen_Math_atan2 = function(x, y) { return Math.atan2(x, y); };
+    
+    function init(wasm_path) {
+        return fetch(wasm_path)
+        .then(response => response.arrayBuffer())
+        .then(buffer => WebAssembly.instantiate(buffer, { './physics': __exports }))
+        .then(({instance}) => {
+            wasm = init.wasm = instance.exports;
+            return;
+        });
+    };
+    self.wasm_bindgen = Object.assign(init, __exports);
+})();
+
