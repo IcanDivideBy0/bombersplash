@@ -1,6 +1,6 @@
 # Setup
 
-Install [rustup](https://rustup.rs/) and [Tiled](https://www.mapeditor.org/), then:
+Install [rustup](https://rustup.rs/), then:
 
 ```sh
 rustup update
@@ -11,6 +11,22 @@ rustup component add rustfmt-preview
 cargo +nightly install wasm-bindgen-cli
 
 yarn physics:build
+cd tiled-utils && yarn && cd -
+```
+
+[Tiled](https://www.mapeditor.org/) map editor is used to generate maps, so you
+might want to install it if you plan to change maps
+
+# Run server
+
+```sh
+cd server && yarn start
+```
+
+# Run client
+
+```sh
+cd client && yarn start
 ```
 
 # Useful commands
