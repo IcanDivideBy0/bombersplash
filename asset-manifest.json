@@ -1,9 +1,10 @@
 {
   "main.css": "static/css/main.c1e4d445.css",
   "main.css.map": "static/css/main.c1e4d445.css.map",
-  "main.js": "static/js/main.d4db0f9c.js",
-  "main.js.map": "static/js/main.d4db0f9c.js.map",
+  "main.js": "static/js/main.f8479315.js",
+  "main.js.map": "static/js/main.f8479315.js.map",
+  "static/media/keyboard-help.png": "static/media/keyboard-help.1abdbc23.png",
   "static/media/physics.no-modules.js.txt": "static/media/physics.no-modules.js.d9ca2a94.txt",
-  "static/media/physics_bg.wasm": "static/media/physics_bg.a7a92df5.wasm",
+  "static/media/physics_bg.wasm": "static/media/physics_bg.a57daa3e.wasm",
   "static/media/scores-fg.png": "static/media/scores-fg.bc5e3c30.png"
 }
