@@ -46,6 +46,17 @@ const PlayersCounter = styled.div`
   }
 `;
 
+const ScoresWrapper = styled.div`
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media screen and (max-width: 800px) {
+    transform: translateX(-50%) scale(0.5);
+  }
+`;
+
 const ResultsWrapper = styled.div`
   position: fixed;
   width: 100vw;
@@ -199,15 +210,9 @@ class GamePage extends React.Component {
               {gameState.players.length > 1 ? "players" : "player"}
             </PlayersCounter>
 
-            <Scores
-              scores={gameState.scores}
-              style={{
-                position: "fixed",
-                bottom: "2rem",
-                left: "50%",
-                transform: "translateX(-50%)"
-              }}
-            />
+            <ScoresWrapper>
+              <Scores scores={gameState.scores} />
+            </ScoresWrapper>
           </React.Fragment>
         )}
 

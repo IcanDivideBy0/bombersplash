@@ -1,4 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+
+const KeyboardHelp = styled.img`
+  position: fixed;
+  top: 1rem;
+  left: 0;
+
+  @media (hover: none) {
+    display: none;
+  }
+`;
 
 const anyPressed = pressedKeys => keys => {
   for (const key of Array.isArray(keys) ? keys : [keys]) {
@@ -88,6 +99,6 @@ export default class KeyboardController extends React.PureComponent {
   }
 
   render() {
-    return null;
+    return <KeyboardHelp src={require("./images/keyboard-help.png")} alt="" />;
   }
 }
